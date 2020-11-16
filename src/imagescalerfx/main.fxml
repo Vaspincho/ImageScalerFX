@@ -10,15 +10,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="imagescalerfx.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imagescalerfx.Controller">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0">
          <left>
             <VBox prefHeight="375.0" prefWidth="150.0" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Images" />
-                  <ListView fx:id="listFiles" prefHeight="383.0" prefWidth="150.0" />
+                  <ListView fx:id="listFiles" prefHeight="356.0" prefWidth="150.0" />
+                  <Label fx:id="lbFinish" text="Label" />
                </children>
             </VBox>
          </left>
@@ -40,4 +40,10 @@
          </center>
       </BorderPane>
    </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

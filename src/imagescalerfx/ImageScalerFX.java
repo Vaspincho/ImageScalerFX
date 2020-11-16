@@ -2,17 +2,27 @@ package imagescalerfx;
 
 import imagescalerfx.utils.FileUtils;
 import imagescalerfx.utils.IOUtils;
+import imagescalerfx.utils.ImageData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+import java.awt.font.ImageGraphicAttribute;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.concurrent.*;
+import java.util.stream.Stream;
+
 
 public class ImageScalerFX extends Application {
+    public static String nombreCarpeta ="images";
+    public static File carpeta = new File(nombreCarpeta);
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -26,59 +36,69 @@ public class ImageScalerFX extends Application {
         launch(args);
     }
 
-
-    public static void readImagesFromDir(){
-
-    }
-
     public static void createThumbs() throws IOException {
+
+
+        String dirName = "";
+        File dirImg;
+        String baseDir = null;
         //scheduledService comprobando si han terminado las tareas cada segundo
-        for (String s : FileUtils.getImgs()
-             ) {
 
-            System.out.println(s.toString());
-            // Borrar directorio de thumbs de esa imagen
-            //Path path = Path.of("ee");
-            //IOUtils.deleteDirectory(path);
 
-            // Crear directorio de cada imagen
+     //   for (ImageData img : Controller.getImgs()) {
 
-            //Resize imgs
-            // save each img as XX_name
+
+
+            /*
+            File img2 = new File(img.getImagePath() + "/" + img.getImageFileName());
+
+            if (img2.isFile()) {
+                dirName = img.getImageFileName().substring(0, img.getImageFileName().length() - 4);
+
+                File dirName2 = new File("images/" + dirName);
+
+                if (dirName2.isDirectory()) {
+                    IOUtils.deleteDirectory(dirName2.toPath());
+                }
+
+
+                dirImg = new File("images/" + dirName);
+                dirImg.mkdir();
+
+
+                for (double i = 1; i < 10; i++) {
+                    File finalDirImg = dirImg;
+                    double finalI = i;
+                        executor.submit(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    IOUtils.resize("images/" + img.getImageFileName(), finalDirImg + "/" + finalI * 10 + "_" + img.getImageFileName(), finalI / 10);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            }});
+
+                    }
+
+                executor.shutdown();
+                }
+            }
+
+
+
+
 
             //PlatForm.runLater();
+*/
 
-        }
+            //    }
 
+    //    }
 
-    }
-
-    public void borrarDirectorios() {
-        String sDirectorio = "images";
-        File f = new File(sDirectorio);
-
-        borrarDirectorio(f);
-
-        if (f.delete()) {
-            System.out.println("El directorio " + sDirectorio + " ha sido borrado correctamente");
-        } else {
-            System.out.println("El directorio " + sDirectorio + " no se ha podido borrar");
-        }
-    }
-
-    public static void borrarDirectorio(File directorio) {
-
-        File[] ficheros = directorio.listFiles();
-
-        for (int i = 0; i<ficheros.length; i++){
-            if (ficheros[i].isDirectory()) {
-                borrarDirectorio(ficheros[i]);
-            }
-            ficheros[i].delete();
-        }
-    }
-
-}
+    }}
 
 
 
